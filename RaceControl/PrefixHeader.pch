@@ -1,0 +1,95 @@
+//
+//  PrefixHeader.pch
+//  RaceControl
+//
+//  Created by peerbits_10 on 06/05/15.
+//  Copyright (c) 2015 Peerbits. All rights reserved.
+//
+
+//#ifndef RaceControl_PrefixHeader_pch
+//#define RaceControl_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+
+
+//#import "AlertMessageViewController.h"
+
+
+#ifdef __OBJC__
+#import "AppDelegate.h"
+
+//#import "ModelClass.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
+
+#import "GeneralFunctions.h"
+#import "Utilities.h"
+#import "Define.h"
+#import "Validate.h"
+#import "TPKeyboardAvoidingScrollView.h"
+
+#import "CoreDataUtils.h"
+#import "NSManagedObject+Utilities.h"
+//
+//#import "AccountObject.h"
+//#endif
+#import "CXCardContainerView.h"
+#import "CXCardView.h"
+#import "DemoContentView.h"
+#import "CustomAlertsCX.h"
+#import <objc/runtime.h>
+
+
+// core data
+
+#ifndef DOCUMENTS_FOLODER
+#define DOCUMENTS_FOLODER		[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#endif
+
+#define DATABSE_PATH  [DOCUMENTS_FOLODER stringByAppendingPathComponent:@"RaceControl.sqlite"]
+
+#define FILE_PATH [[NSBundle mainBundle] pathForResource:@"RaceControl" ofType:@"momd"]
+
+
+#define kUrlWebsite @"http://www.541go.com/"
+
+#define linkid @"985149204"
+
+// Calender
+
+#ifdef __IPHONE_8_0
+#define GregorianCalendar NSCalendarIdentifierGregorian
+#else
+#define GregorianCalendar NSGregorianCalendar
+#endif
+
+
+// fonts
+
+#define FONT_Light(SIZE)[UIFont fontWithName:@"Ubuntu-Light" size:SIZE]
+#define FONT_Regular(SIZE)[UIFont fontWithName:@"Ubuntu" size:SIZE]
+#define FONT_Bold(SIZE)[UIFont fontWithName:@"Ubuntu-Bold" size:SIZE]
+
+
+//#define GENERAL_FUNCTION GeneralFunctions *GENERAL;
+
+#define DELEGATE ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+#define _kisiOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define myScreen ([[UIScreen mainScreen] bounds])
+#define IS_IPAD  UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
+#define decopedia_color [UIColor colorWithRed:120.0/255.0 green:174.0/255.0 blue:36.0/255.0 alpha:255.0/255.0]
+
+#define tagUser_color [UIColor colorWithRed:129.0/255.0 green:129.0/255.0 blue:129.0/255.0 alpha
+
+#endif

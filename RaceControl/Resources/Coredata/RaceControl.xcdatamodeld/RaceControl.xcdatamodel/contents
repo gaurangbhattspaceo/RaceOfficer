@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Boat_master" representedClassName="Boat_master" syncable="YES">
+        <attribute name="boatno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sailno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skipper" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="addboat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Race_boat" inverseName="addboatmaster" inverseEntity="Race_boat" syncable="YES"/>
+        <relationship name="addboatresult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Race_result" inverseName="addboatresultmaster" inverseEntity="Race_result" syncable="YES"/>
+    </entity>
+    <entity name="Notification_master" representedClassName="Notification_master" syncable="YES">
+        <attribute name="badgecount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Race_boat" representedClassName="Race_boat" syncable="YES">
+        <attribute name="boat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="race_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="addboatmaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Boat_master" inverseName="addboat" inverseEntity="Boat_master" syncable="YES"/>
+        <relationship name="addracemaster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Race_master" inverseName="addrace" inverseEntity="Race_master" syncable="YES"/>
+    </entity>
+    <entity name="Race_master" representedClassName="Race_master" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="expiretime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isboatadded" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="racecomplete" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timelimit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeofrace" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="addrace" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Race_boat" inverseName="addracemaster" inverseEntity="Race_boat" syncable="YES"/>
+        <relationship name="addraceresult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Race_result" inverseName="addraceresultmaster" inverseEntity="Race_result" syncable="YES"/>
+    </entity>
+    <entity name="Race_result" representedClassName="Race_result" syncable="YES">
+        <attribute name="boat_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="csv_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="race_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="sailno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skipper" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="video_path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="addboatresultmaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Boat_master" inverseName="addboatresult" inverseEntity="Boat_master" syncable="YES"/>
+        <relationship name="addraceresultmaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Race_master" inverseName="addraceresult" inverseEntity="Race_master" syncable="YES"/>
+    </entity>
+    <fetchRequest name="FetchRequest" entity="Race_result" predicateString="place != &quot;&quot;" includeSubentities="YES" includePropertyValues="YES" includesPendingChanges="YES" returnObjectsAsFaults="YES" returnDistinctResults="YES" resultType="2"/>
+    <elements>
+        <element name="Boat_master" positionX="-155" positionY="126" width="128" height="163"/>
+        <element name="Notification_master" positionX="-272" positionY="36" width="128" height="58"/>
+        <element name="Race_boat" positionX="-576" positionY="287" width="128" height="118"/>
+        <element name="Race_master" positionX="-558" positionY="18" width="128" height="238"/>
+        <element name="Race_result" positionX="-252" positionY="387" width="128" height="208"/>
+    </elements>
+</model>
